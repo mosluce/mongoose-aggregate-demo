@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<form action="/" method="get">
+
+
+    <input type="number" max="12" min="1" name="beforeMonth" value="<%- beforeMonth %>">
+    <span>月 1 日 ～ </span>
+    <input type="number" max="12" min="1" name="afterMonth" value="<%- afterMonth %>">
+    <span>最後一日</span>
+
+    <button>查詢</button>
+</form>
+<hr />
+<form action="/" method="post">
+    <div class="form-group">
+        <label>學號</label>
+        <input class="form-control" type="text" name="sNum">
+        <button type="submit">計數</button>
+    </div>
+    <% if(typeof counterItems !== 'undefined') { %>
+    <ul>
+        <%
+        for(var i in counterItems) {
+            var item = counterItems[i];
+        %>
+        <li>
+            <%- item.sNum %>: <%- item.count %>
+        </li>
+        <% } %>
+    </ul>
+    <% } %>
+</form>
+</body>
+</html>
