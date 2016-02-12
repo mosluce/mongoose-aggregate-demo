@@ -49,6 +49,7 @@ router.get('/', function (req, res, next) {
             sNum: {$first: '$sNum'},
             count: {$sum: 1} //群組中每包含一筆資料 count 就多 "1"
         })
+        .sort('-count') //依照點單率排序
         .exec()
         .then(function (counterItems) {
             console.log(counterItems);
